@@ -62,6 +62,16 @@ function fetchMarketData($source, $symbols) {
         }
     }
 
+    foreach ($symbols as $symbol) {
+        if (!isset($results[$symbol]) && $symbol !== 'USDTRUB') {
+            $results[$symbol] = [
+                'symbol'               => $symbol,
+                'price'                => null,
+                'price_change_24h_percent' => null
+            ];
+        }
+    }
+
     return $results;
 }
 
